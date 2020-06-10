@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+body
+  font-family: 'Roboto', serif
+  padding-bottom: 1.5rem
+
+.spinner-container
+  display: flex
+  margin-top: 50px
+
+.spinner
+  width: 2.5rem
+  height: 2.5rem
+  border-top-color: #4285f4
+  border-left-color: #4285f4
+  animation: spinner 400ms linear infinite
+  border-bottom-color: transparent
+  border-right-color: transparent
+  border-style: solid
+  border-width: 2px
+  border-radius: 50%
+  margin: auto
+
+@keyframes spinner
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+
+.shine
+  background: #e8eaed linear-gradient(to right, #e8eaed 0%, #dfe0e6 20%, #e8eaed 40%, #e8eaed 100%) no-repeat
+  background-size: 800px 400px
+  display: inline-block
+  position: relative
+  animation-duration: 1s
+  animation-fill-mode: forwards
+  animation-iteration-count: infinite
+  animation-name: placeholder-shimmer
+  animation-timing-function: linear
+
+@keyframes placeholder-shimmer
+  0%
+    background-position: -468px 0
+
+  100%
+    background-position: 468px 0
+
