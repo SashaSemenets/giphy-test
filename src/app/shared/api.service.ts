@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
-  private offset: number = 0;
+  offset: number = 0;
   searchQuery: string = '';
 
   constructor(public http: HttpClient) { }

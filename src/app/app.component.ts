@@ -43,7 +43,8 @@ export class AppComponent implements OnInit {
 
   detectBottom(): void {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      window.scrollTo(0, window.scrollY);
+      window.onscroll = () => null;
+      window.scrollTo(0, window.scrollY + 100);
       this.httpService.paginatePage();
       if (!this.loadedAll) {
         if (this.httpService.searchQuery.length) {
@@ -52,6 +53,7 @@ export class AppComponent implements OnInit {
           this.getTrendingGifs();
         }
       }
+      this.handleScroll();
     }
   }
 

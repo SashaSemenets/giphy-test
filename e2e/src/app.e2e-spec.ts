@@ -8,10 +8,29 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display app title', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('giphy-test app is running!');
+    expect(page.getTitleText()).toEqual('Giphy-test');
   });
+
+  it('should display gif category name', () => {
+    page.navigateTo();
+    expect(page.getCategoryText()).toEqual('Trending');
+  });
+
+  it('should change gif category name', () => {
+    page.navigateTo();
+    expect(page.getCategoryText()).toEqual('Trending');
+    page.searchField('bat');
+    page.searchBtn();
+    expect(page.getCategoryText()).toEqual('bat');
+  });
+
+  it('should correct display trending gifs', () => {
+    page.navigateTo();
+    expect(page.gifsList().count()).toBe(3);
+  });
+
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
