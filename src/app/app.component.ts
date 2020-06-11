@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './shared/api.service';
 import * as chunk from 'lodash.chunk';
-
+import { Data } from './shared/gif';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  gifs: Array<any> = [];
+  gifs: Array<Data[]> = [];
   isLoading: boolean = false;
   loadedAll: boolean = false;
   isFirstLoad: boolean = true;
@@ -24,10 +24,9 @@ export class AppComponent implements OnInit {
   getTrendingGifs(): void {
     this.isLoading = true;
     this.httpService.getTrendingGifs()
-      .subscribe((resp: any) => {
-        if (resp.data.length) {
-          let { data } = resp;
-          let filteredRow = chunk(data, 3);
+      .subscribe((resp: Array<Data>) => {
+        if (resp.length) {
+          let filteredRow = chunk(resp, 3);
           this.gifs.push(...filteredRow);
         } else {
           this.loadedAll = true;
@@ -59,10 +58,9 @@ export class AppComponent implements OnInit {
 
   searchGifs() {
     this.httpService.searchGifs()
-      .subscribe((resp: any) => {
-        if (resp.data.length) {
-          let { data } = resp;
-          let filteredRow = chunk(data, 3);
+      .subscribe((resp: Array<Data>) => {
+        if (resp.length) {
+          let filteredRow = chunk(resp, 3);
           this.gifs.push(...filteredRow);
         } else {
           this.loadedAll = true;

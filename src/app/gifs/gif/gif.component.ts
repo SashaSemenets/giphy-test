@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Data } from '../../shared/gif';
 
 @Component({
   selector: 'app-gif',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./gif.component.sass']
 })
 export class GifComponent implements OnInit {
-  @Input() gif;
+  @Input() gif: Data;
 
   constructor() { }
 

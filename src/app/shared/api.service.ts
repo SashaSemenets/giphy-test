@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Gif } from '../shared/gif';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiService {
 
   getTrendingGifs() {
     return this.http.get(`${environment.apiUrl}/trending?limit=9&offset=${this.offset}&api_key=${environment.apiKey}`)
-      .pipe(map(data => data));
+      .pipe(map((resp: Gif) => resp.data));
   }
 
   paginatePage(): void {
@@ -35,6 +36,6 @@ export class ApiService {
 
   searchGifs() {
     return this.http.get(`${environment.apiUrl}/search?limit=9&q=${this.searchQuery}&offset=${this.offset}&api_key=${environment.apiKey}`)
-      .pipe(map(data => data));
+      .pipe(map((resp: Gif) => resp.data));
   }
 }
